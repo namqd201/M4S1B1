@@ -1,0 +1,207 @@
+# Software Architecture Decision – Startup Case Study
+
+## Tổng quan
+
+Repository này trình bày bài phân tích và tư vấn cho một startup đang đứng trước quyết định quan trọng:
+Nên ưu tiên xây dựng hệ thống nhanh để ra mắt thị trường hay đầu tư vào một kiến trúc bền vững để mở rộng lâu dài.
+
+Nội dung bao gồm:
+
+* Vai trò của kiến trúc phần mềm
+* Các mô hình kiến trúc phổ biến
+* Các thuộc tính chất lượng của hệ thống
+* Định hướng lựa chọn kiến trúc phù hợp
+
+---
+
+## Mục tiêu
+
+### Kiến thức
+
+* Hiểu vai trò của kiến trúc phần mềm trong phát triển hệ thống
+* Nắm được các tiêu chí đánh giá chất lượng hệ thống
+
+### Kỹ năng
+
+* Phân tích và so sánh các loại kiến trúc
+* Tổng hợp và hệ thống hóa kiến thức để phục vụ thực tế
+
+---
+
+## Tại sao kiến trúc là bước sống còn
+
+Việc lựa chọn kiến trúc ngay từ đầu ảnh hưởng trực tiếp đến sự thành bại của dự án.
+
+### 1. Giới hạn khả năng mở rộng
+
+Nếu chọn sai kiến trúc:
+
+* Hệ thống dễ bị quá tải khi số lượng người dùng tăng
+* Khó mở rộng từng phần riêng biệt
+
+### 2. Gia tăng nợ kỹ thuật
+
+Quyết định nhanh ban đầu có thể dẫn đến:
+
+* Khó thêm tính năng mới
+* Khó sửa lỗi
+* Tốc độ phát triển chậm lại theo thời gian
+
+### 3. Rủi ro kinh doanh
+
+Một hệ thống không ổn định sẽ:
+
+* Gây gián đoạn dịch vụ
+* Làm giảm trải nghiệm người dùng
+* Mất lợi thế cạnh tranh
+
+Kết luận:
+Kiến trúc phần mềm không chỉ là vấn đề kỹ thuật, mà là nền tảng cho sự phát triển và tồn tại của sản phẩm.
+
+---
+
+## Các loại kiến trúc phần mềm
+
+### 1. Kiến trúc Monolithic
+
+Toàn bộ hệ thống được xây dựng trong một khối duy nhất.
+
+Ưu điểm:
+
+* Dễ phát triển
+* Dễ triển khai
+* Phù hợp giai đoạn MVP
+
+Nhược điểm:
+
+* Khó mở rộng
+* Khó bảo trì khi hệ thống lớn
+
+---
+
+### 2. Kiến trúc Microservices
+
+Hệ thống được chia thành nhiều dịch vụ nhỏ, độc lập.
+
+Ưu điểm:
+
+* Dễ mở rộng
+* Có thể triển khai từng phần
+* Linh hoạt
+
+Nhược điểm:
+
+* Phức tạp
+* Yêu cầu cao về hạ tầng và DevOps
+
+---
+
+### 3. Kiến trúc phân tầng (Layered Architecture)
+
+Hệ thống được chia thành các tầng như:
+
+* Controller
+* Service
+* Repository
+
+Ưu điểm:
+
+* Rõ ràng, dễ hiểu
+* Dễ bảo trì
+
+Nhược điểm:
+
+* Có thể cứng nhắc khi hệ thống phát triển lớn
+
+---
+
+### 4. Kiến trúc hướng sự kiện (Event-Driven)
+
+Các thành phần giao tiếp thông qua sự kiện.
+
+Ưu điểm:
+
+* Xử lý bất đồng bộ tốt
+* Khả năng chịu tải cao
+
+Nhược điểm:
+
+* Khó debug
+* Độ phức tạp cao
+
+---
+
+## Các thuộc tính chất lượng (Quality Attributes)
+
+### 1. Scalability (Khả năng mở rộng)
+
+Khả năng hệ thống đáp ứng khi số lượng người dùng tăng.
+
+---
+
+### 2. Availability (Tính sẵn sàng)
+
+Hệ thống có hoạt động liên tục hay không.
+
+---
+
+### 3. Maintainability (Khả năng bảo trì)
+
+Mức độ dễ dàng khi sửa đổi và nâng cấp hệ thống.
+
+---
+
+### 4. Performance (Hiệu năng)
+
+Tốc độ phản hồi và xử lý của hệ thống.
+
+---
+
+### 5. Security (Bảo mật)
+
+Khả năng bảo vệ dữ liệu và hệ thống khỏi tấn công.
+
+---
+
+### 6. Reliability (Độ tin cậy)
+
+Hệ thống có hoạt động chính xác và ổn định không.
+
+---
+
+### 7. Flexibility (Tính linh hoạt)
+
+Khả năng thích ứng với thay đổi yêu cầu.
+
+---
+
+## Mối quan hệ giữa kiến trúc và sự thành công của dự án
+
+Một kiến trúc tốt không phải là kiến trúc phức tạp nhất, mà là kiến trúc phù hợp với mục tiêu.
+
+Đối với startup:
+
+* Giai đoạn đầu nên ưu tiên tốc độ phát triển
+* Sau đó cải tiến dần để đáp ứng khả năng mở rộng
+
+Chiến lược hợp lý:
+
+```
+Bắt đầu với Monolithic → Refactor → Chuyển sang Microservices
+```
+
+Lợi ích của kiến trúc tốt:
+
+* Giảm chi phí dài hạn
+* Tăng tốc phát triển
+* Cải thiện trải nghiệm người dùng
+* Dễ mở rộng hệ thống
+
+Rủi ro của kiến trúc kém:
+
+* Nợ kỹ thuật tăng cao
+* Hệ thống thiếu ổn định
+* Chi phí bảo trì lớn
+
+Kết luận:
+Kiến trúc phần mềm là yếu tố cốt lõi quyết định khả năng phát triển bền vững của dự án.
